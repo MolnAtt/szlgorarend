@@ -1,0 +1,79 @@
+{% load static %}
+{% load dolgozatfilterek %}
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    {# META #}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# google font import -- roboto slab #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    {# favicon.ico #}
+    <link rel="shortcut icon" type="image/png" href="{% static 'pic/favicon.ico' %}"/>
+
+    {# CSS-fájlok #}
+    <link rel="stylesheet" href="{% static 'css/structure/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/structure/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/structure/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/structure/aside.css' %}">
+    <link rel="stylesheet" href="{% static 'css/structure/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dolgozat.css' %}">
+
+    {# JS-fájlok #}
+    <script src="{% static 'js/teszt.js' %}"></script>
+
+    {# Egyéb #}
+    <title> {% include "structure/title.html" %}</title>
+
+</head>
+<body>
+    {% include "structure/header.html" %}
+
+
+    {# MAIN #}
+
+    <main>    
+        <section id="dolgozatadatok">
+            <h2 id="nev">{{ dolgozat.nev }}</h2>
+            <div id="ido">{{ dolgozat.ido|ehn }}</div>
+            <div id="suly">{{ dolgozat.suly }}</div>
+            <div id="ponthatarok">
+                <div class="jegy">1</div>
+                <div class="jegy_szazalek">0%</div>
+                <div class="osztott_jegy">1/2</div>
+                <div class="osztott_jegy_szazalek">{{ dolgozat.ponthatar_2|bol:dolgozat.sensitivity_12|szep_szazalek }}</div>
+                <div class="osztott_jegy_sensitivity_szazalek">{{ dolgozat.sensitivity_12|szep_szazalek }}</div>
+                <div class="jegy">2</div>
+                <div class="jegy_szazalek">{{ dolgozat.ponthatar_2|szep_szazalek }}</div>
+                <div class="osztott_jegy">2/3</div>
+                <div class="osztott_jegy_szazalek">{{ dolgozat.ponthatar_3|bol:dolgozat.sensitivity_23|szep_szazalek }}</div>
+                <div class="osztott_jegy_sensitivity_szazalek">{{ dolgozat.sensitivity_23|szep_szazalek }}</div>
+                <div class="jegy">3</div>
+                <div class="jegy_szazalek">{{ dolgozat.ponthatar_3|szep_szazalek }}</div>
+                <div class="osztott_jegy">3/4</div>
+                <div class="osztott_jegy_szazalek">{{ dolgozat.ponthatar_4|bol:dolgozat.sensitivity_34|szep_szazalek }}</div>
+                <div class="osztott_jegy_sensitivity_szazalek">{{ dolgozat.sensitivity_34|szep_szazalek }}</div>
+                <div class="jegy">4</div>
+                <div class="osztott_jegy_szazalek">{{ dolgozat.ponthatar_4|szep_szazalek }}</div>
+                <div class="osztott_jegy">4/5</div>
+                <div class="osztott_jegy_szazalek">{{ dolgozat.ponthatar_5|bol:dolgozat.sensitivity_45|szep_szazalek }}</div>
+                <div class="osztott_jegy_sensitivity_szazalek">{{ dolgozat.sensitivity_45|szep_szazalek }}</div>
+                <div class="jegy">5</div>
+                <div class="osztott_jegy_szazalek">{{ dolgozat.ponthatar_5|szep_szazalek }}</div>
+                <div class="osztott_jegy">5+5</div>
+                <div class="jegy_szazalek">{{ dolgozat.ponthatar_55|szep_szazalek }}</div>                
+            </div>
+        </section>
+    </main>
+
+    {# FOOTER #}
+
+    {% include "structure/footer.html" %}
+
+</body>
+</html>
