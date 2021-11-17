@@ -6,18 +6,24 @@ from APP.views import *
 urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 	path('admin/', admin.site.urls),
-    path('', index),
-    path('csoportok/', csoportok),
-    path('csoportok/<str:csoport>/', dolgozatok),
-    path('csoportok/<str:csoport>/<str:dolgozat>/', milegyen),
-    path('csoportok/<str:csoport>/<str:dolgozat>/view/', dolgozat_megtekintese),
-    path('csoportok/<str:csoport>/<str:dolgozat>/edit/', dolgozat_szerkesztese),
+    # path('', index),
+    path('orarend/', lambda x: render(x, "linkek.html", {'linkek': [
+            {'urlkod': 'nagy', 'nev':'Nagy órarendek'},
+            {'urlkod': 'csoportos', 'nev': 'Csoportosított órarendek'},
+            {'urlkod': 'szeletelt', 'nev': 'Szeletelt órarendek'},
+        ]})),
 
-	# path('task-update/<str:pk>/', views.taskUpdate, name="task-update"),
-	# path('task-delete/<str:pk>/', views.taskDelete, name="task-delete"),
+    path('orarend/<str:meret>/', lambda x,meret: render(x, "linkek.html", {'linkek': [
+            {'urlkod': 'tanar', 'nev': 'Tanárok órarendjei'},
+            {'urlkod': 'terem', 'nev': 'Termek órarendjei'},
+            {'urlkod': 'diak' , 'nev': 'Osztályok órarendjei'},
+        ]})),
+
+    path('orarend/nagy/terem/', nagy_teor),
+
 ]
-"""
 
+"""
 path('api/get/variable/', api_get_var),
 path('api/get/model-object/all/', api_get_all),
 path('api/get/model-object/this/<str:pk>/', api_get_one),

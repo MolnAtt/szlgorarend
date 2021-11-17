@@ -7,10 +7,16 @@ footer{
     color: var(--footer-fg-color);
     border-top: solid var(--line-width) var(--line-color);
 
-    position:absolute;
+    position:fixed;
     bottom:0;
     width:100%;
     height:var(--footer-height);   
     font-size: small;
+}
+
+footer a{
+    text-decoration: none;
+    color:var(--footer-fg-color);
+    /* font-weight: bold; */
 }
 

@@ -9,48 +9,13 @@ from rest_framework.response import Response
 # from .serializers import BigyoSerializer
 
 
-@login_required
-def index(request):
-    return render(request, "index.html", {})
 
-@login_required
-def csoportok(request):
-    return render(request, "linkek.html", {'linkek': request.user.felhasznalo.csoportjai()})
-
-@login_required
-def dolgozatok(request, csoport):
-    a_csoport = Csoport.objects.get(urlkod=csoport)
-    return render(request, "linkek.html", {'linkek': a_csoport.dolgozatai(request.user)})
-
-@login_required
-def milegyen(request, csoport, dolgozat):
-    a_csoport = Csoport.objects.get(urlkod=csoport)
-    a_dolgozat = Dolgozat.objects.get(urlkod=dolgozat)
-    linkek = [
-        {
-            'nev': 'Megtekintés', 
-            'urlkod':'view'
-        },
-        {
-            'nev': 'Módosítás', 
-            'urlkod':'edit'
-        },
-    ]
-    return render(request, "linkek.html", {'linkek': linkek})
-
-@login_required
-def dolgozat_megtekintese(request, csoport, dolgozat):
-    a_csoport = Csoport.objects.get(urlkod=csoport)
-    a_dolgozat = Dolgozat.objects.get(urlkod=dolgozat)
-    return render(request, "dolgozat.html", {
-        'csoport': a_csoport,
-        'dolgozat':a_dolgozat,
+def nagy_teor(request):
+    return render(request, "nagy_teor_base.html", {
+        'termek':sorted(Terem.objects.all(), key=lambda x:x.sorszam),
+        'napok': Nap.objects.all(),
+        'hanyadikok': range(0,10),
         })
-
-def dolgozat_szerkesztese(request, csoport, dolgozat):
-    a_csoport = Csoport.objects.get(urlkod=csoport)
-    a_dolgozat = Dolgozat.objects.get(urlkod=dolgozat)
-    return render(request, "linkek.html", {})
 
 
 

@@ -1,0 +1,21 @@
+{% load orarendfilterek %}
+<div id="container">
+    {% for a_terem in termek %}
+        <div class="sorcim">{{ a_terem.hosszu }}</div>
+        {% for a_nap in napok %}
+            {% for a_hanyadik in hanyadikok %}
+            {% orak terem=a_terem nap=a_nap ora=a_hanyadik as orak_itt %}
+            <div class="rublika terem_{{a_terem.sorszam}} nap_{{a_nap.sorszam}} ora_{{a_hanyadik}}">
+                {% for ora in orak_itt %}
+                <div class="ora">
+                    <div class="tantargy {{ ora.tantargy.rovid }}">{{ ora.tantargy.rovid }}</div>
+                    <div class="osztaly cs_{{ ora.csoport.osztalyai }}">{{ ora.csoport.osztalyai }}</div>
+                    <div class="tanar">{{ ora.tanar.rovid }}</div>
+                    <div class="csoport">{{ ora.csoport }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+</div>

@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{% static 'css/structure/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/structure/aside.css' %}">
     <link rel="stylesheet" href="{% static 'css/structure/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nagy_teor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/szinek.css' %}">
 
     {# JS-fájlok #}
     <script src="{% static 'js/teszt.js' %}"></script>
@@ -31,27 +33,14 @@
 </head>
 <body>
     {% include "structure/header.html" %}
-
-
+    
+    
     {# MAIN #}
-
-    <main>    
-        <section>
-            <a href="diak/">
-                Diák vagyok
-            </a>
-            <a href="csoportok/">
-                Tanár vagyok
-            </a>
-
-            
-        </section>
+    
+    <main>
+        {% include "nagy_teor.html" %}        
     </main>
 
-
-    {# ASIDE #}
-
-    <aside></aside>
 
 
     {# FOOTER #}

@@ -75,6 +75,17 @@ class Osztaly(models.Model):
 
     def __str__(self):
         return self.kreta
+
+    def tomorites(osztalylista) -> str:
+        sum = ''
+        for evf in ['ny','9','10','11','12']:
+            evfolyamlista = [x for x in osztalylista if evf == x.evfolyam]
+            if len(evfolyamlista)>0:
+                sum+=evf
+                for osztaly in evfolyamlista:
+                    sum+=osztaly.szekcio.lower()
+        return sum
+
         
 
 class Tanar(models.Model):
@@ -128,6 +139,13 @@ class Csoport(models.Model):
 
     def __str__(self):
         return self.kreta
+
+    @property
+    def osztalyai(a_csoport):
+        return Osztaly.tomorites([ x.osztaly for x in CSOK.objects.filter(csoport=a_csoport)])
+
+
+
 
 
 # CSOK = Csoport-Osztály-Kapcsolat

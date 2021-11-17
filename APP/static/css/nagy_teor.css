@@ -1,0 +1,81 @@
+main {
+    justify-content: start;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: auto repeat(50,100px);
+    grid-auto-rows: 100px;
+}
+
+
+#container .rublika{
+    display: grid;
+    align-items: stretch;
+    justify-items: stretch;
+    border: 2px solid var(--line-color);
+    background-color: var(--rublika-bg-color);
+    color: var(--rublika-fg-color);
+    /* padding:5px; */
+
+}
+
+#container .rublika .ora{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: 
+    "tantargy osztaly"
+    "tanar tanar"
+    "csoport csoport";
+    align-content: stretch;
+    background-color:var(--ora-bg-color);
+}
+
+#container .rublika .ora .tanar{
+    grid-area: tanar;
+    font-size: small;
+    text-align: center;
+    padding:5px;
+    font-weight: bold;
+}
+
+#container .rublika .ora .tantargy{
+    grid-area: tantargy;
+    font-weight: bold;
+    justify-self: start;
+    padding:5px;
+    border-right:1px solid var(--line-color);
+    border-bottom:1px solid var(--line-color);
+    border-bottom-right-radius: 5px;
+}
+
+#container .rublika .ora .osztaly{
+    grid-area: osztaly;
+    justify-self: end;
+    padding:5px;
+    border-left:1px solid var(--line-color);
+    border-bottom:1px solid var(--line-color);
+    border-bottom-left-radius: 5px;
+}
+
+#container .rublika .ora .csoport{
+    grid-area: csoport;
+    font-size: x-small;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ora_0{
+    background-color: gray!important;
+}
+
+.sorcim{
+    display:flex;
+    text-align: right;
+    justify-content: end;
+    align-items: center;
+    padding:10px;
+    border:2px solid var(--line-color);
+    font-size: large;
+    font-weight: bold;
+}

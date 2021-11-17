@@ -1,6 +1,7 @@
 from django import template
 # from datetime import datetime
 from babel.dates import format_date, format_datetime, format_time
+from APP.models import *
 
 register = template.Library()
 
@@ -18,3 +19,9 @@ def bol(mibol, mit):
 def ehn(datum):
     return format_datetime(datum, "yyyy.MM.dd (EEEE)", locale='hu_HU')
     # return datum.strftime('%Y.%m.%d (%a)')
+
+@register.simple_tag #(name='ilyenkor')
+def orak(**kwargs):
+    return Ora.objects.filter(**kwargs)
+
+
