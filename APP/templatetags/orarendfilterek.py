@@ -20,8 +20,16 @@ def ehn(datum):
     return format_datetime(datum, "yyyy.MM.dd (EEEE)", locale='hu_HU')
     # return datum.strftime('%Y.%m.%d (%a)')
 
-@register.simple_tag #(name='ilyenkor')
+@register.simple_tag
 def orak(**kwargs):
     return Ora.objects.filter(**kwargs)
 
+@register.simple_tag
+def orak_dor(**kwargs):
+    # if kwargs['osztaly'].sorszam!=3:
+    #     return []
+    return kwargs['osztaly'].orai_ilyenkor(kwargs['nap'], kwargs['ora'])
 
+@register.filter(name='pont_melle_szokoz')
+def pont_melle_szokoz(szoveg):
+    return szoveg.replace(".", ". ")

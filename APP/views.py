@@ -9,14 +9,15 @@ from rest_framework.response import Response
 # from .serializers import BigyoSerializer
 
 
-
-def nagy_teor(request):
-    return render(request, "nagy_teor_base.html", {
-        'termek':sorted(Terem.objects.all(), key=lambda x:x.sorszam),
+def orarend_kontextus(html, css, **kwargs):
+    kontextus = {        
         'napok': Nap.objects.all(),
         'hanyadikok': range(0,10),
-        })
-
+        'a_html': html,
+        'a_css': css,
+    }
+    kontextus.update(kwargs)
+    return kontextus
 
 
 """

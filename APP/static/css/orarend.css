@@ -1,0 +1,86 @@
+.oszlopcim, .napnev, .elvalaszto_oszlopcim, .orarendcim{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    border:2px solid var(--line-color);
+    font-size: large;
+    font-weight: bold;
+    position:sticky;
+    background-color: white;
+}
+
+.oszlopcim{
+    top:30px;
+}
+.elvalaszto_oszlopcim{
+    top:0px;
+    grid-row-end: span 2;
+}
+
+.napnev{
+    top:0px;
+    grid-column-end: span 10;
+    border:2px solid var(--line-color);
+}
+
+
+.orarendcim{
+    grid-column-end: span 5;
+    border:2px solid var(--line-color);
+}
+
+
+#container .rublika .ora .tantargy{
+    grid-area: tantargy;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    justify-self: start;
+    padding:5px;
+    border-right:1px solid var(--line-color);
+    border-bottom:1px solid var(--line-color);
+    border-bottom-right-radius: 5px;
+}
+
+
+#container .rublika .ora .csoport{
+    grid-area: csoport;
+    font-size: x-small;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ora_0{
+    background-color: gray!important;
+}
+
+.sorcim{
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    border:2px solid var(--line-color);
+    font-size: large;
+    font-weight: bold;
+}
+
+
+
+.ora a{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color:black;
+}
+
+.ora a:hover{
+
+    border-radius: 10px;
+    transition: 0.3s;
+    background-color: gray;
+    /* color:white; */
+}

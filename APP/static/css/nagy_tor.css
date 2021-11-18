@@ -19,14 +19,14 @@
     grid-template-columns: auto auto;
     grid-template-areas: 
     "tantargy osztaly"
-    "tanar tanar"
+    "terem terem"
     "csoport csoport";
     align-content: stretch;
     background-color:var(--ora-bg-color);
 }
 
-#container .rublika .ora .tanar{
-    grid-area: tanar;
+#container .rublika .ora .terem{
+    grid-area: terem;
     font-size: small;
     text-align: center;
     padding:5px;

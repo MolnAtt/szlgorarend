@@ -60,6 +60,13 @@ class Terem(models.Model):
     def __str__(self):
         return self.kreta
         
+    @property
+    def urlkod(a_terem):
+        s = a_terem.rovid.lower()
+        for (ekezet, ekezetmentes) in [('á', 'a'), ('í', 'i'), ('ű', 'u'), ('ő', 'o'), ('ü', 'u'), ('ö', 'o'), ('ú', 'u'), ('ó', 'o'), ('é', 'e')]:
+            s = s.replace(ekezet, ekezetmentes)
+        return s.replace(' ','').replace('.','').replace('-','')
+
 
 class Osztaly(models.Model):
 
@@ -86,7 +93,8 @@ class Osztaly(models.Model):
                     sum+=osztaly.szekcio.lower()
         return sum
 
-        
+    def orai_ilyenkor(az_osztaly, a_nap, a_hanyadik):
+        return filter(lambda ora: ora.reszt_vesz(az_osztaly), Ora.objects.filter(nap=a_nap, ora=a_hanyadik))
 
 class Tanar(models.Model):
 
@@ -102,6 +110,13 @@ class Tanar(models.Model):
 
     def __str__(self):
         return self.kreta
+
+    @property
+    def urlkod(a_tanar):
+        s = a_tanar.rovid.lower()
+        for (ekezet, ekezetmentes) in [('á', 'a'), ('í', 'i'), ('ű', 'u'), ('ő', 'o'), ('ü', 'u'), ('ö', 'o'), ('ú', 'u'), ('ó', 'o'), ('é', 'e')]:
+            s = s.replace(ekezet, ekezetmentes)
+        return s.replace(' ','').replace('.','').replace('-','')
 
 
 class Munkakozosseg(models.Model):
@@ -178,4 +193,6 @@ class Ora(models.Model):
     def __str__(o):
         return f'{o.nap.hosszu} {o.ora}.: {o.tanar} --- {o.tantargy.rovid} --> {o.csoport} [{o.terem}]  '
 
+    def reszt_vesz(az_ora, az_osztaly):
+        return CSOK.objects.filter(csoport=az_ora.csoport, osztaly=az_osztaly).exists()
 
