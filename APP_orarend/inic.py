@@ -1,6 +1,6 @@
 print('------ inic.py indul')
 
-from APP.models import *
+from APP_orarend.models import *
 from django.contrib.auth.models import User, Group
 
 
@@ -44,19 +44,19 @@ print("--- inic.py: létfontosságú csoportok létrejöttek")
 
 """ csv fájlok feldolgozása """
 
-csv2table(Nap, "APP/csvs/nap.csv")
-csv2table(Tantargy, "APP/csvs/tantargy.csv")
-csv2table(Szarny, "APP/csvs/szarny.csv")
-csv2table(Terem, "APP/csvs/terem.csv", [
+csv2table(Nap, "APP_orarend/csvs/nap.csv")
+csv2table(Tantargy, "APP_orarend/csvs/tantargy.csv")
+csv2table(Szarny, "APP_orarend/csvs/szarny.csv")
+csv2table(Terem, "APP_orarend/csvs/terem.csv", [
     {
         'tabla': Szarny, 
         'idegen_kulcs': 'szarny',
         'tabla_kulcs': 'hosszu'
     },
 ])
-csv2table(Tanar, "APP/csvs/tanar.csv")
-csv2table(Munkakozosseg, "APP/csvs/munkakozosseg.csv")
-csv2table(MTK, "APP/csvs/mtk.csv", [
+csv2table(Tanar, "APP_orarend/csvs/tanar.csv")
+csv2table(Munkakozosseg, "APP_orarend/csvs/munkakozosseg.csv")
+csv2table(MTK, "APP_orarend/csvs/mtk.csv", [
     {
         'tabla': Tanar, 
         'idegen_kulcs': 'tanar',
@@ -68,9 +68,9 @@ csv2table(MTK, "APP/csvs/mtk.csv", [
         'tabla_kulcs': 'nev'
     },
 ])
-csv2table(Osztaly, "APP/csvs/osztaly.csv")
-csv2table(Csoport, "APP/csvs/csoport.csv")
-csv2table(CSOK, "APP/csvs/csok.csv", [
+csv2table(Osztaly, "APP_orarend/csvs/osztaly.csv")
+csv2table(Csoport, "APP_orarend/csvs/csoport.csv")
+csv2table(CSOK, "APP_orarend/csvs/csok.csv", [
     {
         'tabla': Csoport, 
         'idegen_kulcs': 'csoport',
@@ -82,7 +82,7 @@ csv2table(CSOK, "APP/csvs/csok.csv", [
         'tabla_kulcs': 'kreta'
     },
 ])
-csv2table(Ora, "APP/csvs/ora.csv", [
+csv2table(Ora, "APP_orarend/csvs/ora.csv", [
     {
         'tabla': Nap, 
         'idegen_kulcs': 'nap',

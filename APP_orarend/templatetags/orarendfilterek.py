@@ -1,7 +1,7 @@
 from django import template
 # from datetime import datetime
 from babel.dates import format_date, format_datetime, format_time
-from APP.models import *
+from APP_orarend.models import *
 
 register = template.Library()
 
