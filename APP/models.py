@@ -96,6 +96,12 @@ class Osztaly(models.Model):
     def orai_ilyenkor(az_osztaly, a_nap, a_hanyadik):
         return filter(lambda ora: ora.reszt_vesz(az_osztaly), Ora.objects.filter(nap=a_nap, ora=a_hanyadik))
 
+    @property
+    def urlkod(az_osztaly) -> str:
+        return (az_osztaly.evfolyam + az_osztaly.szekcio).lower()
+
+
+
 class Tanar(models.Model):
 
     sorszam = models.IntegerField()
@@ -158,6 +164,10 @@ class Csoport(models.Model):
     @property
     def osztalyai(a_csoport):
         return Osztaly.tomorites([ x.osztaly for x in CSOK.objects.filter(csoport=a_csoport)])
+
+    @property
+    def osztaly_e(a_csoport):
+        return 1 == CSOK.objects.filter(csoport=a_csoport).count()
 
 
 

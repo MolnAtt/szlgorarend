@@ -33,3 +33,7 @@ def orak_dor(**kwargs):
 @register.filter(name='pont_melle_szokoz')
 def pont_melle_szokoz(szoveg):
     return szoveg.replace(".", ". ")
+
+@register.filter(name='hagyomanyos')
+def hagyomanyos(s):
+    return s if s!="nya" else "kny"
