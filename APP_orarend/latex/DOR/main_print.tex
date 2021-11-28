@@ -1,0 +1,19 @@
+\documentclass[a3paper, landscape]{article}
+\usepackage[margin=0.5cm]{geometry}
+\input{preambulum}
+\input{letszam}
+\begin{document}
+\foreach \i in {0,...,6}{
+    \oda[inner sep = 0, anchor=north west]{north west}{-\i*1130+5}{0*800-4}{\skeleton\orarend{1,...,7}}
+    \newpage
+
+    \oda[inner sep = 0, anchor=north west]{north west}{-\i*1130+5}{1*800-4}{\skeleton\orarend{7,...,13}}
+    \newpage
+
+    \oda[inner sep = 0, anchor=north west]{north west}{-\i*1130+5}{2*800-4}{\skeleton\orarend{13,...,19}}
+    \newpage
+
+    \oda[inner sep = 0, anchor=north west]{north west}{-\i*1130+5}{3*800-4}{\skeleton\orarend{19,...,\letszam}}
+    \newpage
+}
+\end{document}
