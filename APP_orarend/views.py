@@ -15,11 +15,11 @@ def orarend_kontextus(html, cssek, **kwargs):
     return kontextus
 
 def beolvas(honnan) -> str:
-    with open(f'APP/templates/{honnan}', mode='r', encoding='utf-8') as templatehtml:
+    with open(f'APP_orarend/templates/{honnan}', mode='r', encoding='utf-8') as templatehtml:
         return templatehtml.read()
 
 def kiir(hova, mit) -> None:
-    with open(f'APP/templates/{hova}', mode='w', encoding='utf-8') as preparedhtml:
+    with open(f'APP_orarend/templates/{hova}', mode='w', encoding='utf-8') as preparedhtml:
         preparedhtml.write(mit)
 
 def prepare_or_serve(request, rendernow, template, prepared, context):
